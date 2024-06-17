@@ -1,0 +1,19 @@
+{
+  "comment": "e81b8de4-8f9c-46c7-bc7f-4c3227f6ae80",
+  "date": "06/16/2024",
+  "distribution": false,
+  "domains": [
+    "*"
+  ],
+  "expires": "08/16/2024",
+  "fileSystemAllowed": true,
+  "licensefileversion": "1.1",
+  "localhost": true,
+  "oobAllowed": true,
+  "package": "complete",
+  "product": "yFiles for HTML",
+  "type": "eval",
+  "version": "2.6",
+  "watermark": "yFiles HTML Evaluation License (expires in ${license-days-remaining} days)",
+  "key": "4f3c8731605c5e140da80ac14457de1cf30f0e21"
+}

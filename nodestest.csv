@@ -1,0 +1,6 @@
+id,label,type
+1,nokia,phone
+2,samsung,phone
+3,aws,cloud
+4,gcp,cloud
+5,azure,cloud

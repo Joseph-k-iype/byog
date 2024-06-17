@@ -1,0 +1,502 @@
+@prefix ns1: <http://example.org/app/> .
+
+ns1:1001 a ns1:Application ;
+    ns1:hasName "Alpha_2" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1055 .
+
+ns1:1002 a ns1:Application ;
+    ns1:hasName "Alpha_3" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1043 .
+
+ns1:1005 a ns1:Application ;
+    ns1:hasName "Alpha_6" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1000 .
+
+ns1:1006 a ns1:File ;
+    ns1:hasName "File_PNG_1006" ;
+    ns1:hasType "PNG" ;
+    ns1:hasUpstreamApp ns1:1039 .
+
+ns1:1013 a ns1:Application ;
+    ns1:hasName "Beta_3" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1081 .
+
+ns1:1016 a ns1:Application ;
+    ns1:hasName "Beta_6" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1053 .
+
+ns1:1019 a ns1:Application ;
+    ns1:hasName "Beta_9" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1049 .
+
+ns1:1020 a ns1:Application ;
+    ns1:hasName "Beta_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1074 .
+
+ns1:1021 a ns1:File ;
+    ns1:hasName "File_CSV_1021" ;
+    ns1:hasType "CSV" ;
+    ns1:hasUpstreamApp ns1:1092 .
+
+ns1:1022 a ns1:File ;
+    ns1:hasName "File_PNG_1022" ;
+    ns1:hasType "PNG" ;
+    ns1:hasUpstreamApp ns1:1058 .
+
+ns1:1023 a ns1:Application ;
+    ns1:hasName "Gamma_2" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1090 .
+
+ns1:1024 a ns1:File ;
+    ns1:hasName "File_TXT_1024" ;
+    ns1:hasType "TXT" ;
+    ns1:hasUpstreamApp ns1:1042 .
+
+ns1:1028 a ns1:Application ;
+    ns1:hasName "Gamma_7" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1014 .
+
+ns1:1031 a ns1:Application ;
+    ns1:hasName "Gamma_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1004 .
+
+ns1:1034 a ns1:File ;
+    ns1:hasName "File_PDF_1034" ;
+    ns1:hasType "PDF" ;
+    ns1:hasUpstreamApp ns1:1032 .
+
+ns1:1041 a ns1:File ;
+    ns1:hasName "File_MP3_1041" ;
+    ns1:hasType "MP3" ;
+    ns1:hasUpstreamApp ns1:1092 .
+
+ns1:1044 a ns1:File ;
+    ns1:hasName "File_MP3_1044" ;
+    ns1:hasType "MP3" ;
+    ns1:hasUpstreamApp ns1:1035 .
+
+ns1:1045 a ns1:File ;
+    ns1:hasName "File_GIF_1045" ;
+    ns1:hasType "GIF" ;
+    ns1:hasUpstreamApp ns1:1084 .
+
+ns1:1057 a ns1:File ;
+    ns1:hasName "File_GIF_1057" ;
+    ns1:hasType "GIF" ;
+    ns1:hasUpstreamApp ns1:1015 .
+
+ns1:1061 a ns1:Application ;
+    ns1:hasName "Zeta_7" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1060 .
+
+ns1:1063 a ns1:Application ;
+    ns1:hasName "Zeta_9" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1042 .
+
+ns1:1064 a ns1:Application ;
+    ns1:hasName "Zeta_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1055 .
+
+ns1:1068 a ns1:File ;
+    ns1:hasName "File_MP4_1068" ;
+    ns1:hasType "MP4" ;
+    ns1:hasUpstreamApp ns1:1092 .
+
+ns1:1070 a ns1:File ;
+    ns1:hasName "File_JPG_1070" ;
+    ns1:hasType "JPG" ;
+    ns1:hasUpstreamApp ns1:1095 .
+
+ns1:1072 a ns1:File ;
+    ns1:hasName "File_MP3_1072" ;
+    ns1:hasType "MP3" ;
+    ns1:hasUpstreamApp ns1:1008 .
+
+ns1:1077 a ns1:Application ;
+    ns1:hasName "Theta_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1046 .
+
+ns1:1080 a ns1:Application ;
+    ns1:hasName "Theta_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1033 .
+
+ns1:1086 a ns1:File ;
+    ns1:hasName "File_JPG_1086" ;
+    ns1:hasType "JPG" ;
+    ns1:hasUpstreamApp ns1:1075 .
+
+ns1:1088 a ns1:Application ;
+    ns1:hasName "Iota_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1046 .
+
+ns1:1089 a ns1:Application ;
+    ns1:hasName "Iota_2" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1071 .
+
+ns1:1091 a ns1:File ;
+    ns1:hasName "File_Excel_1091" ;
+    ns1:hasType "Excel" ;
+    ns1:hasUpstreamApp ns1:1025 .
+
+ns1:1093 a ns1:Application ;
+    ns1:hasName "Iota_6" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1079 .
+
+ns1:1097 a ns1:File ;
+    ns1:hasName "File_TXT_1097" ;
+    ns1:hasType "TXT" ;
+    ns1:hasUpstreamApp ns1:1066 .
+
+ns1:1098 a ns1:File ;
+    ns1:hasName "File_MP3_1098" ;
+    ns1:hasType "MP3" ;
+    ns1:hasUpstreamApp ns1:1036 .
+
+ns1:1003 a ns1:Application ;
+    ns1:hasName "Alpha_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1010 .
+
+ns1:1007 a ns1:Application ;
+    ns1:hasName "Alpha_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1071 .
+
+ns1:1008 a ns1:File ;
+    ns1:hasName "File_Excel_1008" ;
+    ns1:hasType "Excel" ;
+    ns1:hasUpstreamApp ns1:1026 .
+
+ns1:1009 a ns1:Application ;
+    ns1:hasName "Alpha_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1030 .
+
+ns1:1010 a ns1:Application ;
+    ns1:hasName "Alpha_11" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1094 .
+
+ns1:1011 a ns1:Application ;
+    ns1:hasName "Beta_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1069 .
+
+ns1:1012 a ns1:File ;
+    ns1:hasName "File_PNG_1012" ;
+    ns1:hasType "PNG" ;
+    ns1:hasUpstreamApp ns1:1050 .
+
+ns1:1015 a ns1:Application ;
+    ns1:hasName "Beta_5" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1095 .
+
+ns1:1017 a ns1:Application ;
+    ns1:hasName "Beta_7" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1049 .
+
+ns1:1027 a ns1:Application ;
+    ns1:hasName "Gamma_6" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1067 .
+
+ns1:1029 a ns1:Application ;
+    ns1:hasName "Gamma_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1009 .
+
+ns1:1032 a ns1:File ;
+    ns1:hasName "File_PDF_1032" ;
+    ns1:hasType "PDF" ;
+    ns1:hasUpstreamApp ns1:1065 .
+
+ns1:1033 a ns1:Application ;
+    ns1:hasName "Delta_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1027 .
+
+ns1:1035 a ns1:Application ;
+    ns1:hasName "Delta_3" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1092 .
+
+ns1:1038 a ns1:File ;
+    ns1:hasName "File_JPG_1038" ;
+    ns1:hasType "JPG" ;
+    ns1:hasUpstreamApp ns1:1076 .
+
+ns1:1040 a ns1:File ;
+    ns1:hasName "File_GIF_1040" ;
+    ns1:hasType "GIF" ;
+    ns1:hasUpstreamApp ns1:1081 .
+
+ns1:1047 a ns1:Application ;
+    ns1:hasName "Epsilon_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1000 .
+
+ns1:1048 a ns1:File ;
+    ns1:hasName "File_MP4_1048" ;
+    ns1:hasType "MP4" ;
+    ns1:hasUpstreamApp ns1:1014 .
+
+ns1:1050 a ns1:Application ;
+    ns1:hasName "Epsilon_7" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1085 .
+
+ns1:1051 a ns1:Application ;
+    ns1:hasName "Epsilon_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1004 .
+
+ns1:1052 a ns1:Application ;
+    ns1:hasName "Epsilon_9" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1025 .
+
+ns1:1053 a ns1:Application ;
+    ns1:hasName "Epsilon_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1037 .
+
+ns1:1054 a ns1:Application ;
+    ns1:hasName "Epsilon_11" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1062 .
+
+ns1:1056 a ns1:Application ;
+    ns1:hasName "Zeta_2" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1007 .
+
+ns1:1058 a ns1:Application ;
+    ns1:hasName "Zeta_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1055 .
+
+ns1:1059 a ns1:File ;
+    ns1:hasName "File_GIF_1059" ;
+    ns1:hasType "GIF" ;
+    ns1:hasUpstreamApp ns1:1096 .
+
+ns1:1060 a ns1:Application ;
+    ns1:hasName "Zeta_6" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1036 .
+
+ns1:1062 a ns1:File ;
+    ns1:hasName "File_GIF_1062" ;
+    ns1:hasType "GIF" ;
+    ns1:hasUpstreamApp ns1:1075 .
+
+ns1:1065 a ns1:Application ;
+    ns1:hasName "Zeta_11" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1018 .
+
+ns1:1066 a ns1:Application ;
+    ns1:hasName "Eta_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1095 .
+
+ns1:1067 a ns1:Application ;
+    ns1:hasName "Eta_2" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1078 .
+
+ns1:1069 a ns1:Application ;
+    ns1:hasName "Eta_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1026 .
+
+ns1:1073 a ns1:Application ;
+    ns1:hasName "Eta_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1004 .
+
+ns1:1074 a ns1:Application ;
+    ns1:hasName "Eta_9" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1056 .
+
+ns1:1078 a ns1:Application ;
+    ns1:hasName "Theta_2" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1052 .
+
+ns1:1079 a ns1:File ;
+    ns1:hasName "File_CSV_1079" ;
+    ns1:hasType "CSV" ;
+    ns1:hasUpstreamApp ns1:1011 .
+
+ns1:1082 a ns1:File ;
+    ns1:hasName "File_PDF_1082" ;
+    ns1:hasType "PDF" ;
+    ns1:hasUpstreamApp ns1:1076 .
+
+ns1:1083 a ns1:Application ;
+    ns1:hasName "Theta_7" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1051 .
+
+ns1:1084 a ns1:Application ;
+    ns1:hasName "Theta_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1073 .
+
+ns1:1085 a ns1:Application ;
+    ns1:hasName "Theta_9" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1094 .
+
+ns1:1087 a ns1:Application ;
+    ns1:hasName "Theta_11" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1025 .
+
+ns1:1096 a ns1:Application ;
+    ns1:hasName "Iota_9" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1090 .
+
+ns1:1099 a ns1:Application ;
+    ns1:hasName "Kappa_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1037 .
+
+ns1:1000 a ns1:File ;
+    ns1:hasName "File_MP4_1000" ;
+    ns1:hasType "MP4" ;
+    ns1:hasUpstreamApp ns1:1025 .
+
+ns1:1014 a ns1:Application ;
+    ns1:hasName "Beta_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1038 .
+
+ns1:1018 a ns1:Application ;
+    ns1:hasName "Beta_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1087 .
+
+ns1:1026 a ns1:Application ;
+    ns1:hasName "Gamma_5" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1003 .
+
+ns1:1030 a ns1:File ;
+    ns1:hasName "File_PNG_1030" ;
+    ns1:hasType "PNG" ;
+    ns1:hasUpstreamApp ns1:1043 .
+
+ns1:1036 a ns1:Application ;
+    ns1:hasName "Delta_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1048 .
+
+ns1:1039 a ns1:Application ;
+    ns1:hasName "Delta_7" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1012 .
+
+ns1:1042 a ns1:Application ;
+    ns1:hasName "Delta_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1071 .
+
+ns1:1043 a ns1:File ;
+    ns1:hasName "File_PDF_1043" ;
+    ns1:hasType "PDF" ;
+    ns1:hasUpstreamApp ns1:1030 .
+
+ns1:1046 a ns1:Application ;
+    ns1:hasName "Epsilon_3" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1029 .
+
+ns1:1049 a ns1:Application ;
+    ns1:hasName "Epsilon_6" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1059 .
+
+ns1:1075 a ns1:Application ;
+    ns1:hasName "Eta_10" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1081 .
+
+ns1:1076 a ns1:Application ;
+    ns1:hasName "Eta_11" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1083 .
+
+ns1:1090 a ns1:Application ;
+    ns1:hasName "Iota_3" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1039 .
+
+ns1:1094 a ns1:File ;
+    ns1:hasName "File_Excel_1094" ;
+    ns1:hasType "Excel" ;
+    ns1:hasUpstreamApp ns1:1037 .
+
+ns1:1037 a ns1:Application ;
+    ns1:hasName "Delta_5" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1017 .
+
+ns1:1055 a ns1:Application ;
+    ns1:hasName "Zeta_1" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1047 .
+
+ns1:1071 a ns1:File ;
+    ns1:hasName "File_DOCX_1071" ;
+    ns1:hasType "DOCX" ;
+    ns1:hasUpstreamApp ns1:1018 .
+
+ns1:1081 a ns1:File ;
+    ns1:hasName "File_GIF_1081" ;
+    ns1:hasType "GIF" ;
+    ns1:hasUpstreamApp ns1:1004 .
+
+ns1:1095 a ns1:Application ;
+    ns1:hasName "Iota_8" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1054 .
+
+ns1:1004 a ns1:Application ;
+    ns1:hasName "Alpha_5" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1040 .
+
+ns1:1025 a ns1:Application ;
+    ns1:hasName "Gamma_4" ;
+    ns1:hasType "Application" ;
+    ns1:hasUpstreamApp ns1:1082 .
+
+ns1:1092 a ns1:File ;
+    ns1:hasName "File_Excel_1092" ;
+    ns1:hasType "Excel" ;
+    ns1:hasUpstreamApp ns1:1099 .
+
