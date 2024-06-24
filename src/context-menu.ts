@@ -1,58 +1,13 @@
-/**
- * @license
- * This app exhibits yFiles for HTML functionalities.
- * Copyright (c) 2024 by yWorks GmbH, Vor dem Kreuzberg 28,
- * 72070 Tuebingen, Germany. All rights reserved.
- *
- * yFiles demo files exhibit yFiles for HTML functionalities.
- * Any redistribution of demo files in source code or binary form, with
- * or without modification, is not permitted.
- *
- * Owners of a valid software license for a yFiles for HTML
- * version are allowed to use the app source code as basis for their
- * own yFiles for HTML powered applications. Use of such programs is
- * governed by the rights and conditions as set out in the yFiles for HTML
- * license agreement. If in doubt, please mail to contact@yworks.com.
- *
- * THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
- * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
- * NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
- * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-import {
-  GraphComponent,
-  GraphEditorInputMode,
-  GraphViewerInputMode,
-  ICommand,
-  IModelItem,
-  INode,
-  Point,
-  PopulateItemContextMenuEventArgs,
-  Rect,
-  Size,
-} from 'yfiles'
+import { GraphComponent, INode, AdjacencyTypes, IEdge, ShapeNodeStyle, SolidColorFill, Stroke, Rect, PolylineEdgeStyle, Arrow, Animator, DefaultLabelStyle, IAnimation, Size, TimeSpan, IModelItem, PopulateItemContextMenuEventArgs, GraphViewerInputMode, ICommand } from 'yfiles'
+import { getNodeColor, loadAndProcessCSVFiles } from './main'
 import { ContextMenu } from './lib/ContextMenu'
 import './context-menu.css'
 
 export function initializeContextMenu(graphComponent: GraphComponent): void {
-  const inputMode = graphComponent.inputMode as
-    | GraphEditorInputMode
-    | GraphViewerInputMode
+  const inputMode = graphComponent.inputMode as GraphViewerInputMode
 
-  // Create a context menu. In this demo, we use our sample context menu implementation but you can use any other
-  // context menu widget as well. See the Context Menu demo for more details about working with context menus.
   const contextMenu = new ContextMenu(graphComponent)
 
-  // Add event listeners to the various events that open the context menu. These listeners then
-  // call the provided callback function which in turn asks the current ContextMenuInputMode if a
-  // context menu should be shown at the current location.
   contextMenu.addOpeningEventListeners(graphComponent, (location) => {
     if (
       inputMode.contextMenuInputMode.shouldOpenMenu(
@@ -63,46 +18,31 @@ export function initializeContextMenu(graphComponent: GraphComponent): void {
     }
   })
 
-  // Add an event listener that populates the context menu according to the hit elements, or cancels showing a menu.
-  // This PopulateItemContextMenu is fired when calling the ContextMenuInputMode.shouldOpenMenu method above.
   inputMode.addPopulateItemContextMenuListener((_, evt) =>
     populateContextMenu(contextMenu, graphComponent, evt)
   )
 
-  // Add a listener that closes the menu when the input mode requests this
   inputMode.contextMenuInputMode.addCloseMenuListener(() => {
     contextMenu.close()
   })
 
-  // If the context menu closes itself, for example because a menu item was clicked, we must inform the input mode
   contextMenu.onClosedCallback = () => {
     inputMode.contextMenuInputMode.menuClosed()
   }
 }
 
-/**
- * Populates the context menu based on the item the mouse hovers over.
- * @param contextMenu The context menu.
- * @param graphComponent The given graphComponent
- * @param args The event args.
- */
 function populateContextMenu(
   contextMenu: ContextMenu,
   graphComponent: GraphComponent,
   args: PopulateItemContextMenuEventArgs<IModelItem>
 ): void {
-  // The 'showMenu' property is set to true to inform the input mode that we actually want to show a context menu
-  // for this item (or more generally, the location provided by the event args).
-  // If you don't want to show a context menu for some locations, set 'false' in this cases.
   args.showMenu = true
 
   contextMenu.clearItems()
 
   const node = args.item instanceof INode ? args.item : null
-  // If the cursor is over a node select it
   updateSelection(graphComponent, node)
 
-  // Create the context menu items
   const selectedNodes = graphComponent.selection.selectedNodes
   if (selectedNodes.size > 0) {
     contextMenu.addMenuItem('Zoom to node', () => {
@@ -112,32 +52,130 @@ function populateContextMenu(
       })
       graphComponent.zoomToAnimated(targetRect.getEnlarged(100))
     })
+
+    if (selectedNodes.size === 1) {
+      const selectedNode = selectedNodes.at(0)
+      if (selectedNode!.tag && (selectedNode!.tag as string).startsWith('aggregated')) {
+        contextMenu.addMenuItem('Expand', () => {
+          expandNode(selectedNode!, graphComponent)
+        })
+      } else {
+        contextMenu.addMenuItem('Aggregate', () => {
+          aggregateNodes(selectedNode!, graphComponent)
+        })
+      }
+    }
   } else {
-    // no node has been hit
     contextMenu.addMenuItem('Fit Graph Bounds', () =>
       ICommand.FIT_GRAPH_BOUNDS.execute(null, graphComponent)
     )
   }
 }
 
-/**
- * Helper function that updates the node selection state when the context menu is opened on a node.
- * @param graphComponent The given graphComponent
- * @param node The node or `null`.
- */
 function updateSelection(
   graphComponent: GraphComponent,
   node: INode | null
 ): void {
   if (node === null) {
-    // clear the whole selection
     graphComponent.selection.clear()
   } else if (!graphComponent.selection.selectedNodes.isSelected(node)) {
-    // no - clear the remaining selection
     graphComponent.selection.clear()
-    // and select the node
     graphComponent.selection.selectedNodes.setSelected(node, true)
-    // also update the current item
     graphComponent.currentItem = node
   }
+}
+
+function aggregateNodes(node: INode, graphComponent: GraphComponent) {
+  const graph = graphComponent.graph
+  const type = node.tag as string
+  const nodesToAggregate = graph.nodes.filter((n) => n.tag === type).toArray()
+
+  const aggregatedNode = graph.createNode({
+    layout: new Rect(node.layout.center, new Size(80, 80)), // Bigger size for aggregated node
+    style: new ShapeNodeStyle({
+      shape: 'ellipse',
+      fill: new SolidColorFill(getNodeColor(type)),
+      stroke: new Stroke('black', 2)
+    }),
+    tag: `aggregated-${type}`,
+    labels: [
+      {
+        text: `${type} (${nodesToAggregate.length})`,
+        style: new DefaultLabelStyle({
+          wrapping: 'character-ellipsis',
+          horizontalTextAlignment: 'center',
+          verticalTextAlignment: 'center',
+          textSize: 12,
+          font: 'Arial'
+        })
+      }
+    ]
+  })
+
+  const edgesToKeep = new Set<IEdge>()
+  nodesToAggregate.forEach((n) => {
+    graph.edgesAt(n, AdjacencyTypes.INCOMING).forEach((e) => {
+      edgesToKeep.add(e)
+      if (e.sourceNode!.tag !== `aggregated-${type}`) {
+        graph.createEdge(e.sourceNode!, aggregatedNode, e.style)
+      }
+    })
+    graph.edgesAt(n, AdjacencyTypes.OUTGOING).forEach((e) => {
+      edgesToKeep.add(e)
+      if (e.targetNode!.tag !== `aggregated-${type}`) {
+        graph.createEdge(aggregatedNode, e.targetNode!, e.style)
+      }
+    })
+  })
+
+  nodesToAggregate.forEach((n) => graph.remove(n))
+
+  edgesToKeep.forEach((e) => {
+    const source = e.sourceNode === node ? aggregatedNode : e.sourceNode!
+    const target = e.targetNode === node ? aggregatedNode : e.targetNode!
+    if (source !== target) {
+      graph.createEdge(source, target, e.style)
+    }
+  })
+
+  animateAggregation(graphComponent, aggregatedNode)
+}
+
+function expandNode(aggregatedNode: INode, graphComponent: GraphComponent) {
+  const graph = graphComponent.graph
+  const type = (aggregatedNode.tag as string).split('-')[1]
+
+  graph.clear()
+
+  loadAndProcessCSVFiles(
+    graphComponent,
+    (window as any).uploadedNodes,
+    (window as any).uploadedEdges,
+    (window as any).uploadedGroups
+  )
+}
+
+function animateAggregation(graphComponent: GraphComponent, aggregatedNode: INode) {
+  const animator = new Animator(graphComponent)
+  const layoutAnimation = IAnimation.createNodeAnimation(
+    graphComponent.graph,
+    aggregatedNode,
+    aggregatedNode.layout.toRect(),
+    TimeSpan.fromMilliseconds(0)
+  )
+  animator.animate(layoutAnimation).catch((err) => console.error(err))
+}
+
+function animateExpansion(graphComponent: GraphComponent, newNodes: INode[]) {
+  const animator = new Animator(graphComponent)
+  const animations: IAnimation[] = newNodes.map((node) =>
+    IAnimation.createNodeAnimation(
+      graphComponent.graph,
+      node,
+      node.layout.toRect(),
+      TimeSpan.fromMilliseconds(0)
+    )
+  )
+  const parallelAnimation = IAnimation.createParallelAnimation(animations)
+  animator.animate(parallelAnimation).catch((err) => console.error(err))
 }
